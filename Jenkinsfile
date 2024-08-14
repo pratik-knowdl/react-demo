@@ -34,8 +34,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                rm -rf /var/www/html/*
-                cp -r docs/.vitepress/dist/* /var/www/html/
+                sudo rm -rf /var/www/html/*
+                sudo cp -r docs/.vitepress/dist/* /var/www/html/
                 sudo systemctl reload nginx
                 '''
             }
