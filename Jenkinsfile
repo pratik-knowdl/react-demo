@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         NODEJS_HOME = tool name: 'NodeJS 16', type: 'NodeJSInstallation'
-        PATH = "/usr/local/lib/node/nodejs/bin/node"
+        PATH = "${NODEJS_HOME}/bin"
     }
 
     stages {
