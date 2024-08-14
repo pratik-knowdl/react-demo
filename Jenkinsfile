@@ -1,7 +1,9 @@
 pipeline {
     agent any
 
-    tools {nodejs "node"}
+    environment {
+        PATH = "/usr/local/lib/node/nodejs/bin:${env.PATH}"
+    }
 
     stages {
 	stage('Environment Check') {
