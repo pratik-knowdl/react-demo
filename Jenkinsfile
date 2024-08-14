@@ -4,6 +4,13 @@ pipeline {
     tools {nodejs "node"}
 
     stages {
+	stage('Environment Check') {
+            steps {
+                sh 'echo $PATH'
+                sh 'node -v'
+                sh 'npm -v'
+            }
+        }
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/pratik-knowdl/react-demo.git'
