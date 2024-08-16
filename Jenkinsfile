@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PATH = "/usr/local/lib/node/nodejs/bin:${env.PATH}"
+        PATH = "/home/ubuntu/.nvm/versions/node/v20.16.0/bin/node:${env.PATH}"
     }
 
     stages {
