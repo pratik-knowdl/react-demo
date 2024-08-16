@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        PATH = "/home/ubuntu/.nvm/versions/node/v20.16.0/bin/node:${env.PATH}"
+        NVM_DIR = "/home/ubuntu/.nvm"
+        PATH = "${NVM_DIR}/versions/node/v20.16.0/bin:${env.PATH}"
     }
 
     stages {
