@@ -7,11 +7,14 @@ pipeline {
     }
 
     stages {
-	stage('Environment Check') {
+	    stage('Environment Check') {
             steps {
-                sh 'echo $PATH'
-                sh 'node -v'
-                sh 'npm -v'
+                sh '''
+                export NVM_DIR="$HOME/.nvm"
+                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                node -v
+                npm -v
+                '''
             }
         }
         stage('Checkout') {
