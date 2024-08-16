@@ -34,7 +34,7 @@ pipeline {
         stage('Deploy to S3') {
             steps {
                 withAWS(region: 'us-east-2', credentials: 'aws_cred_pratik') {
-                    sh 'aws s3 sync docs/.vitepress/dist/ s3://knowdl-temporary --delete'
+                    sh 'aws s3 sync docs/.vitepress/dist/ s3://3pi-dev --delete'
                 }
             }
         }
