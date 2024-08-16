@@ -10,8 +10,11 @@ pipeline {
         stage('Environment Check') {
             steps {
                 sh '''
+                #!/bin/bash
                 export NVM_DIR="/home/ubuntu/.nvm"
-                [ -s "$NVM_DIR/nvm.sh" ] && \\ . "$NVM_DIR/nvm.sh"
+                if [ -f "/home/ubuntu/.nvm/nvm.sh" ]; then
+                    . /home/ubuntu/.nvm/nvm.sh
+                fi
                 node -v
                 npm -v
                 '''
@@ -27,8 +30,11 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
+                #!/bin/bash
                 export NVM_DIR="/home/ubuntu/.nvm"
-                [ -s "$NVM_DIR/nvm.sh" ] && \\ . "$NVM_DIR/nvm.sh"
+                if [ -f "/home/ubuntu/.nvm/nvm.sh" ]; then
+                    . /home/ubuntu/.nvm/nvm.sh
+                fi
                 npm install
                 '''
             }
@@ -37,8 +43,11 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
+                #!/bin/bash
                 export NVM_DIR="/home/ubuntu/.nvm"
-                [ -s "$NVM_DIR/nvm.sh" ] && \\ . "$NVM_DIR/nvm.sh"
+                if [ -f "/home/ubuntu/.nvm/nvm.sh" ]; then
+                    . /home/ubuntu/.nvm/nvm.sh
+                fi
                 npm run docs:build
                 '''
             }
