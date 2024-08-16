@@ -7,16 +7,17 @@ pipeline {
     }
 
     stages {
-	    stage('Environment Check') {
+        stage('Environment Check') {
             steps {
                 sh '''
-                export NVM_DIR="$HOME/.nvm"
+                export NVM_DIR="/home/ubuntu/.nvm"
                 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
                 node -v
                 npm -v
                 '''
             }
         }
+
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/pratik-knowdl/react-demo.git'
@@ -25,13 +26,21 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                sh '''
+                export NVM_DIR="/home/ubuntu/.nvm"
+                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                npm install
+                '''
             }
         }
 
         stage('Build') {
             steps {
-                sh 'npm run docs:build'
+                sh '''
+                export NVM_DIR="/home/ubuntu/.nvm"
+                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                npm run docs:build
+                '''
             }
         }
 
@@ -44,4 +53,3 @@ pipeline {
         }
     }
 }
-
