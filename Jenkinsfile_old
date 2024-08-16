@@ -31,11 +31,13 @@ pipeline {
             }
         }
 
-        stage('Deploy to S3') {
+        stage('Deploy') {
             steps {
-                withAWS(region: 'us-east-2', credentials: 'aws_cred_pratik') {
-                    sh 'aws s3 sync docs/.vitepress/dist/ s3://knowdl-temporary --delete'
-                }
+                sh '''
+                sudo rm -rf /var/www/html/*
+                sudo cp -r docs/.vitepress/dist/* /var/www/html/
+                sudo systemctl reload nginx
+                '''
             }
         }
     }
