@@ -60,5 +60,21 @@ pipeline {
                 }
             }
         }
+
+        stage('Create CloudFront Invalidation') {
+            steps {
+                withAWS(region: 'us-east-2', credentials: 'aws_cred_pratik') {
+                    sh '''
+                    #!/bin/bash
+                    invalidationId=$(aws cloudfront create-invalidation \
+                        --distribution-id E3JY84G8VFB0K \
+                        --paths "/*" \
+                        --query 'Invalidation.Id' \
+                        --output text)
+                    echo "CloudFront Invalidation Created: ${invalidationId}"
+                    '''
+                }
+            }
+        }
     }
 }
