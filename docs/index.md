@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "My Awesome Project on s3 via jenkins"
+  name: "My Awesome Project Push test"
   text: "A VitePress Site"
   tagline: My great project tagline
   actions:
