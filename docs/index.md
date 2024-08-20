@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "My Awesome Project on s3"
+  name: "My Awesome Project on s3 via jenkins"
   text: "A VitePress Site"
   tagline: My great project tagline
   actions:
@@ -15,8 +15,8 @@ hero:
       link: /api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Jenkins Test
+    details: Build from jenkins
   - title: Feature B
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature C
